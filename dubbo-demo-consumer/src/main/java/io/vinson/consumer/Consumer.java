@@ -1,5 +1,6 @@
 package io.vinson.consumer;
 
+import io.vinson.bean.PlayerType;
 import io.vinson.service.DemoService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,10 +13,6 @@ import java.util.List;
 public class Consumer {
 
     public static void main(String[] args) {
-        test1();
-    }
-
-    public static void main1(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"META-INF/spring/consumer.xml"});
         context.start();
         // Obtaining a remote service proxy
@@ -25,10 +22,8 @@ public class Consumer {
         // Display the call result
         System.out.println(hello);
 
-        int result = demoService.calAttack(1, 1000);
-
+        int result = demoService.calAttack(PlayerType.cf, 1000);
         System.out.println(result);
-
     }
 
     public static void test1() {
@@ -44,7 +39,6 @@ public class Consumer {
         });
 
         list.removeIf(item -> {
-
             return false;
         });
     }
